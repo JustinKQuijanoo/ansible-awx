@@ -1,0 +1,12 @@
+---
+  - name: Retrieve information about Ubuntu servers
+    hosts: servers
+    become: true
+
+    tasks:
+      - name: Gather hostname, IP address, Distribution, 
+        ansible.builtin.debug:
+          msg: 
+            - "Hostname: {{ ansible_hostname }}"
+            - "IP Address: {{ ansible_default_ipv4.address }}"
+            - "Distribution: {{ ansible_distribution }} {{ ansible_distribution_version }}"

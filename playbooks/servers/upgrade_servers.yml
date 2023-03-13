@@ -1,0 +1,22 @@
+---
+  - name: Playbook to update and upgrade all servers
+    hosts: servers 
+    become: true
+
+    tasks:
+
+      - name: Run distribution upgrade
+        ansible.builtin.apt:
+          upgrade: dist
+          update_cache: yes
+
+      - name: Check if a reboot is required
+        ansible.builtin.stat:
+          path: /var/run/reboot-required
+          get_md5: no
+        register: reboot_required_file
+
+      - name: Print if reboot is required 
+        ansible.builtin.debug:
+         msg: Reboot required on {{ ansible_hostname }}. Please run 'reboot_servers.yml'
+        when: reboot_required_file.stat.exists == true

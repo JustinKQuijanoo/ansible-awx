@@ -1,0 +1,13 @@
+---
+  - name: Retrieve information about cisco devices
+    hosts: cisco
+    become: true
+
+    tasks:
+      - name: Gather hostname, model, net version, and serial number
+        ansible.builtin.debug:
+          msg: 
+            - "Hostname: {{ ansible_net_hostname }}"
+            - "Model: {{ ansible_net_model }}"
+            - "Net Version: {{ ansible_net_version }}"
+            - "Serial Number: {{ ansible_net_serialnum }}"

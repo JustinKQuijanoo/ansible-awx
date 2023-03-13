@@ -1,0 +1,19 @@
+# This is the default ansible 'hosts' file.
+
+[routers]
+R1 ansible_host=10.12.12.1
+R2 ansible_host=172.16.31.1
+
+[switches]
+ESW1 ansible_host=172.16.31.130
+ESW2 ansible_host=172.16.31.3
+
+[cisco:children]
+routers
+switches
+
+[servers]
+dev01 ansible_host=172.16.31.70
+dns01 ansible_host=172.16.31.71
+dhcp01 ansible_host=172.16.31.72
+filesrv01 ansible_host=172.16.31.73
