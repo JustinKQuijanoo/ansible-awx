@@ -1,14 +1,15 @@
 ---
+# 
+# Author: Justin Quijano
+# TELE36058 - Software Defined Networks
+# Lab 2 - Ansible Tower/AWX
   - name: Playbook to update and upgrade all servers
     vars:
       hostname: ""
-
     hosts: "{{ hostname }}"
     become: true
     gather_facts: false
     tasks:
-      # - set_fact:
-      #     supplied_hostname: "{{ hostname }}"
 
       - name: Run distribution upgrade
         ansible.builtin.apt:
