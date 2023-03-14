@@ -1,0 +1,27 @@
+---
+# 
+# Author: Justin Quijano
+# TELE36058 - Software Defined Networks
+# Lab 2 - Ansible Tower/AWX
+  - name: Playbook to reboot servers
+    var:
+      hostname: ""
+    hosts: "{{ hostname }}" 
+    become: true
+    gather_facts: false
+    tasks:
+
+      - name: Prompt user to confirm action before rebooting
+        ansible.builtin.pause:
+          prompt: "{{ item }}"
+        with_items: |
+          Warning: Proceed with reboot?
+          Press ENTER to continue or CTRL + C to cancel...
+
+      - name: Notify server reboot 
+        ansible.builtin.debug:
+          msg: Please allow 3-5 minute for the server to reboot. Rebooting server {{ hostname }}...
+
+      - name: Reboot server 
+        ansible.builtin.reboot:
+        
