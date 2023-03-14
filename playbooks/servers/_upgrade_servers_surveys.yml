@@ -1,14 +1,14 @@
 ---
   - name: Playbook to update and upgrade all servers
-    vars:
-      hostname: ""
+    # vars:
+    #   hostname: ""
 
-    hosts: "{{ hostname }}" 
+    hosts: filesrv01
     become: true
-    gather_facts: false
+    # gather_facts: false
     tasks:
-      - set_fact:
-          supplied_hostname: "{{ hostname }}"
+      # - set_fact:
+      #     supplied_hostname: "{{ hostname }}"
 
       - name: Run distribution upgrade
         ansible.builtin.apt:
@@ -23,5 +23,5 @@
 
       - name: Print if reboot is required 
         ansible.builtin.debug:
-         msg: Reboot required on {{ supplied_hostname }}. Please run 'reboot_servers.yml'
+         msg: Reboot required on {{ ansible_hostname }}. Please run 'reboot_servers.yml'
         when: reboot_required_file.stat.exists == true
