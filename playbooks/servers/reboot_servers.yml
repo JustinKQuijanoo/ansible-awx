@@ -6,7 +6,7 @@
     tasks:
 
       - name: Prompt user to confirm action before rebooting
-        ansible.buildin.pause:
+        ansible.builtin.pause:
           prompt: "{{ item }}"
         with_items: |
           Warning: Proceed with reboot?
