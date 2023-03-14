@@ -4,7 +4,7 @@
 # TELE36058 - Software Defined Networks
 # Lab 2 - Ansible Tower/AWX
   - name: Playbook to reboot servers
-    var:
+    vars:
       hostname: ""
     hosts: "{{ hostname }}" 
     become: true
