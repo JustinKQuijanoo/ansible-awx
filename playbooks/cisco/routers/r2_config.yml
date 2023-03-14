@@ -1,4 +1,8 @@
 ---
+# 
+# Author: Justin Quijano
+# TELE36058 - Software Defined Networks
+# Lab 2 - Ansible Tower/AWX
   - name: Configure R2's interfaces and OSPFv2
     hosts: R2
     gather_facts: false
