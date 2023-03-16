@@ -1,5 +1,8 @@
 # Default ansible 'hosts' file.
-
+# 
+# Author: Justin Quijano
+# TELE36058 - Software Defined Networks
+# Lab 2 - Ansible Tower/AWX
 [routers]
 R1 ansible_host=10.12.12.1
 R2 ansible_host=172.16.31.1
